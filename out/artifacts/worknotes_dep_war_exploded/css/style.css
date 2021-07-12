@@ -1,0 +1,13 @@
+
+html {min-width:750px;}
+body {text-align:center; margin:0px;}
+body > div {text-align:center; margin-right:auto; margin-left:auto;} 
+form, input, select {margin:0px; padding:0px;}
+body, div {font-size:12px; font-family:ËÎÌו;}
+a img {border:0; margin:0; padding:0;}
+input,select{font-size:12px;height:20px;vertical-align:middle}
+a {color:0000FF; text-decoration:underline;}
+a:hover {color:FF0000;}
+.red{color:red}
+
+.style1 {color: #FF0000}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Person">
+
+  <typeAlias alias="person" type="com.source11.worknotes.domain.Person"/>
+
+  <select id="getPersonAll" resultClass="person" parameterClass="person">
+  <![CDATA[
+  SELECT
+      *
+    FROM person_main
+    WHERE STATUS=0
+    ORDER BY UpdateTime DESC
+  ]]>
+  </select>
+
+  <select id="getPersonByPID" resultClass="person" parameterClass="int">
+  <![CDATA[
+  SELECT
+      *
+    FROM person_main
+    WHERE PK_PersonID=#pk_personID# AND STATUS=0
+  ]]>
+  </select>
+
+  <insert id="insertPerson" parameterClass="person">
+  <![CDATA[
+  INSERT INTO person_main
+      (nameSpell, personName, workID, FK_presidentID,personTypeID, positionID,birthday,SexID,phone1,phone2,memo, workStatusID, Status, UpdateTime, CreateTime, will1, will2)
+    VALUES
+      (#nameSpell#, #personName#, #workID#, #fk_presidentID#, #personTypeID#, #positionID#, #birthday#, #sexID#, #phone1#, #phone2#, #memo#, #workStatusID#, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #will1#, #will2#)
+  ]]>
+  </insert>
+
+  <update id="updatePerson" parameterClass="person">
+  <![CDATA[
+  UPDATE person_main SET
+      nameSpell = #nameSpell#,
+      personName = #personName#,
+      workID = #workID#,
+      FK_presidentID = #fk_presidentID#,
+      personTypeID = #personTypeID#,
+      positionID = #positionID#,
+      birthday = #birthday#,
+      SexID = #sexID#,
+      phone1 = #phone1#,
+      phone2 = #phone2#,
+      memo = #memo#,
+      workStatusID = #workStatusID#,
+      UpdateTime = CURRENT_TIMESTAMP,
+      will1 = #will1#,
+      will2 = #will2#
+    WHERE PK_PersonID=#pk_personID# AND STATUS=0
+  ]]>
+  </update>
+
+  <update id="deletePerson" parameterClass="int">
+  <![CDATA[
+  UPDATE person_main SET
+      Status = 1,
+      UpdateTime = CURRENT_TIMESTAMP
+    WHERE PK_PersonID=#pk_personID# AND STATUS=0
+  ]]>
+  </update>
+
+</sqlMap>

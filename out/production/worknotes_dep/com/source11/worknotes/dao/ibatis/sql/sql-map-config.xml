@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.com//DTD SQL Map Config 2.0//EN"
+    "http://ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+  <properties resource="database.properties"/>
+
+  <transactionManager type="JDBC">
+    <dataSource type="DBCP">
+      <property value="${driver}" name="JDBC.Driver"/>
+      <property value="${url}" name="JDBC.ConnectionURL"/>
+      <property value="${username}" name="JDBC.Username"/>
+      <property value="${password}" name="JDBC.Password"/>
+        <property value="${maxactive}" name="Pool.MaximumActiveConnections"/>
+        <property value="${maxidle}" name="MaximumIdleConnections"/>
+    </dataSource>
+  </transactionManager>
+
+  <sqlMap resource="com/source11/worknotes/dao/ibatis/sql/Account.xml"/>
+    
+  <sqlMap resource="com/source11/worknotes/dao/ibatis/sql/CodeRef.xml"/>
+
+  <sqlMap resource="com/source11/worknotes/dao/ibatis/sql/Person.xml"/>
+
+  <sqlMap resource="com/source11/worknotes/dao/ibatis/sql/Worknote.xml"/>
+
+</sqlMapConfig>

@@ -1,0 +1,29 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="worknotes_dep:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/worknotes_dep_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="worknotes_dep/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="worknotes_dep" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-collections.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-dbcp-1.1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-lang.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-logging.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-pool-1.1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/ibatis-common-2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/ibatis-dao-2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/ibatis-sqlmap-2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jstl.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/junit-4.1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/log4j-1.2.8.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/mysql-connector-java-3.0.17-ga-bin.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/smvc.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/standard.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

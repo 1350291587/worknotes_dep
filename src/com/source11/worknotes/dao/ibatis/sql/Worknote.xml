@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Worknote">
+
+  <typeAlias alias="worknote" type="com.source11.worknotes.domain.Worknote"/>
+  <typeAlias alias="wnsearch" type="com.source11.worknotes.domain.WNSearchVO"/>
+
+  <select id="getListByPID" resultClass="worknote" parameterClass="int">
+  <![CDATA[
+    SELECT
+          *
+    FROM worknote_main
+    WHERE FK_personID = #value#
+      AND STATUS = 0
+    ORDER BY workDate DESC
+    LIMIT 100
+  ]]>
+  </select>
+
+  <select id="getListByPID$DATE" resultClass="worknote" parameterClass="wnsearch">
+  <![CDATA[
+    SELECT
+      *
+    FROM worknote_main
+    WHERE FK_personID = #personid#
+      AND workDate >= #startdate#
+      AND workDate <= #enddate#
+      AND STATUS = 0
+    ORDER BY workDate DESC
+    LIMIT 100
+  ]]>
+  </select>
+
+  <select id="getListByDATE" resultClass="worknote" parameterClass="wnsearch">
+  <![CDATA[
+    SELECT
+      *
+    FROM worknote_main
+    WHERE workDate >= #startdate#
+      AND workDate <= #enddate#
+      AND STATUS = 0
+    ORDER BY workDate DESC,FK_personID DESC
+    LIMIT 100
+  ]]>
+  </select>
+
+
+  <select id="getListAll" resultClass="worknote" parameterClass="worknote">
+  <![CDATA[
+    SELECT
+      *
+    FROM worknote_main
+    WHERE STATUS = 0
+    ORDER BY workDate DESC,FK_personID DESC
+    LIMIT 100
+  ]]>
+  </select>
+
+  <select id="getWorknotebyPID$DATE" resultClass="worknote" parameterClass="worknote">
+  <![CDATA[
+    SELECT
+      *
+    FROM worknote_main
+    WHERE FK_personID = #fk_personID#
+      AND workDate = #workDate#
+      AND STATUS = 0
+  ]]>
+  </select>
+
+  <select id="getWorknotebyWID" resultClass="worknote" parameterClass="long">
+  <![CDATA[
+    SELECT
+      *
+    FROM worknote_main
+    WHERE PK_worknoteID = #pk_worknoteID#
+      AND STATUS = 0
+  ]]>
+  </select>
+
+  <insert id="insertWorknote" parameterClass="worknote">
+  <![CDATA[
+    INSERT INTO worknote_main
+      (FK_personID, workstateID, todayAim, outPlan, helping, tomorrowPlan,
+      workDate, resultID, FK_inspectorPID, comment, Status, UpdateTime, CreateTime,
+      will1, will2) VALUES (#fk_personID#, #workstateID#, #todayAim#, #outPlan#,
+      #helping#, #tomorrowPlan#, #workDate#, #resultID#, #FK_inspectorPID#, #comment#, 0,
+      CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #will1#, #will2#)
+  ]]>
+  </insert>
+
+  <update id="deleteWorknote" parameterClass="long">
+  <![CDATA[
+    UPDATE worknote_main SET
+      Status = 1,
+      UpdateTime = CURRENT_TIMESTAMP
+    WHERE PK_worknoteID=#pk_worknoteID# AND STATUS=0
+  ]]>
+  </update>
+
+  <update id="updateWorknote" parameterClass="worknote">
+  <![CDATA[
+    UPDATE worknote_main SET
+      workstateID = #workstateID#,
+      todayAim = #todayAim#,
+      outPlan = #outPlan#,
+      helping = #helping#,
+      tomorrowPlan = #tomorrowPlan#,
+      resultID = #resultID#,
+      FK_inspectorPID = #FK_inspectorPID#,
+      comment = #comment#,
+      UpdateTime = CURRENT_TIMESTAMP,
+      will1 = #will1#,
+      will2 = #will2#
+    WHERE PK_worknoteID=#pk_worknoteID# AND STATUS=0
+  ]]>
+  </update>
+
+
+</sqlMap>

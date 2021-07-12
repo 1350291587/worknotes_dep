@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>系统登陆</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="js/common.js"></script>
+
+</head>
+
+<body>
+<div align="center">
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <table width="300" height="150" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="left" valign="top" bgcolor="#CCCCCC"><table width="300" height="150" border="0" cellpadding="0" cellspacing="1">
+        <tr>
+          <td align="center" valign="middle" bgcolor="#FFFFFF">            <form name="form1" method="post" action="">
+            <table width="200" height="100" border="0" cellpadding="0" cellspacing="0">
+              <tr align="center">
+                <td colspan="2">&nbsp;</td>
+              </tr>
+              <tr align="center">
+                <td colspan="2">用户登陆</td>
+              </tr>
+              <tr>
+                <td colspan="2">&nbsp;</td>
+                </tr>
+              <tr>
+                <td width="68" align="right">用户名：</td>
+                <td width="132"><input name="textfield" type="text" size="12"></td>
+              </tr>
+              <tr>
+                <td colspan="2">&nbsp;</td>
+                </tr>
+              <tr>
+                <td align="right">密码：</td>
+                <td><input name="textfield" type="text" size="12"></td>
+              </tr>
+              <tr>
+                <td colspan="2">&nbsp;</td>
+                </tr>
+              <tr align="center">
+                <td colspan="2"><select name="Select" size="1">
+                  <option value="back/backindex.htm">系统维护</option>
+				  <option value="search/searchlist.htm">信息查询</option>
+				  <option value="search/examinelist.htm">日志审核</option>
+                  <option value="front/frontindex.htm">前台登陆管理</option>
+				  
+                </select>&nbsp;&nbsp;&nbsp;&nbsp;<button onClick="window.location=Select.options[Select.selectedIndex].value"> 登陆</button></td>
+                </tr>
+            </table>
+            </form></td>
+        </tr>
+      </table></td>
+    </tr>
+  </table>
+</div>
+</body>
+
+</html>

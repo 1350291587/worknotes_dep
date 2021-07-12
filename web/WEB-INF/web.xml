@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+    <servlet>
+        <servlet-name>AccountController</servlet-name>
+        <servlet-class>com.source11.worknotes.service.AccountController</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>WorknoteController</servlet-name>
+        <servlet-class>com.source11.worknotes.service.WorknoteController</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>PersonController</servlet-name>
+        <servlet-class>com.source11.worknotes.service.PersonController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AccountController</servlet-name>
+        <url-pattern>/accountctl</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>WorknoteController</servlet-name>
+        <url-pattern>/worknotectl</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PersonController</servlet-name>
+        <url-pattern>/personctl</url-pattern>
+    </servlet-mapping>
+</web-app>

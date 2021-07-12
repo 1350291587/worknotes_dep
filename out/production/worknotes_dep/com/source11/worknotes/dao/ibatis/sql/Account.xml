@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Account">
+
+  <typeAlias alias="account" type="com.source11.worknotes.domain.Account"/>
+
+  <select id="getAccountById" resultClass="account" parameterClass="String">
+  <![CDATA[
+    SELECT
+          *
+    FROM account_main
+    WHERE PK_UserID=#value#
+  ]]>
+  </select>
+
+  <select id="getAccountByUsernameAndPassword" resultClass="account" parameterClass="account">
+  <![CDATA[
+  SELECT
+      *
+    FROM account_main
+    WHERE PK_UserID=#pk_userid#
+      AND password=password( #password# )
+      AND STATUS=0
+  ]]>
+  </select>
+
+  <select id="getAccountByAccountID" resultClass="account" parameterClass="int">
+  <![CDATA[
+  SELECT
+      *
+    FROM account_main
+    WHERE PK_accountID=#pk_accountID#
+      AND STATUS=0
+  ]]>
+  </select>
+
+  <select id="getAccountAll" resultClass="account" parameterClass="account">
+  <![CDATA[
+    SELECT
+      *
+    FROM account_main
+    WHERE STATUS=0
+    ORDER BY UpdateTime DESC
+  ]]>
+  </select>
+
+  <select id="getAccountbyPID" resultClass="account" parameterClass="int">
+  <![CDATA[
+  SELECT
+      *
+    FROM account_main
+    WHERE FK_PersonID=#value# AND STATUS=0
+    ORDER BY UpdateTime DESC
+  ]]>
+  </select>
+
+  <insert id="insertAccount" parameterClass="account">
+  <![CDATA[
+    INSERT INTO account_main
+      (PK_UserID, password, FK_PersonID, FK_role, workStatus, Status, UpdateTime, CreateTime, will1, will2)
+    VALUES
+      (#pk_userid#, password( #password# ), #fk_personID#, #fk_role#, #workstatus#, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #will1#, #will2#)
+  ]]>
+  </insert>
+
+  <update id="updateAccount" parameterClass="account">
+  <![CDATA[
+  UPDATE account_main SET
+      PK_UserID = #pk_userid#,
+      password = password( #password# ),
+      FK_role = #fk_role#,
+      workStatus = #workstatus#,
+      UpdateTime = CURRENT_TIMESTAMP,
+      will1 = #will1#,
+      will2 = #will2#
+    WHERE PK_accountID=#pk_accountID# AND STATUS=0
+  ]]>
+  </update>
+
+  <update id="updateAccountNoPass" parameterClass="account">
+ <![CDATA[
+  UPDATE account_main SET
+      PK_UserID = #pk_userid#,
+      FK_role = #fk_role#,
+      workStatus = #workstatus#,
+      UpdateTime = CURRENT_TIMESTAMP,
+      will1 = #will1#,
+      will2 = #will2#
+    WHERE PK_accountID=#pk_accountID# AND STATUS=0
+  ]]>
+  </update>
+
+  <update id="updatePassword" parameterClass="account">
+ <![CDATA[
+  UPDATE account_main SET
+      password = password( #password# ),
+      UpdateTime = CURRENT_TIMESTAMP
+    WHERE PK_UserID=#pk_userid# AND STATUS=0
+  ]]>
+  </update>
+
+  <update id="deleteAccount" parameterClass="String">
+  <![CDATA[
+    UPDATE account_main SET
+      Status = 1,
+      UpdateTime = CURRENT_TIMESTAMP
+    WHERE PK_UserID=#pk_userid# AND STATUS=0
+  ]]>
+  </update>
+
+</sqlMap>
